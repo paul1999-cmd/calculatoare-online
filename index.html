@@ -6,22 +6,22 @@
     <title>Portal 140+ Calculatoare Online</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4017039440632687" crossorigin="anonymous"></script>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; background: #f0f2f5; color: #333; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; background: #f0f2f5; }
         .header { background: #1a73e8; color: white; text-align: center; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
         .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 4px solid #1a73e8; }
         h3 { color: #1a73e8; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 5px; }
         ul { list-style: none; padding: 0; }
         li { margin-bottom: 8px; }
-        a { color: #444; text-decoration: none; cursor: pointer; font-weight: 500; }
-        a:hover { color: #1a73e8; text-decoration: underline; }
+        a { color: #444; text-decoration: none; cursor: pointer; font-weight: 500; display: block; }
+        a:hover { color: #1a73e8; background: #e8f0fe; }
 
-        /* Stil pentru Calculatorul Modal (Fereastra care apare) */
+        /* Stil pentru Fereastra de Calcul (Modal) */
         #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; }
-        .modal-content { background: white; width: 90%; max-width: 400px; margin: 100px auto; padding: 25px; border-radius: 15px; text-align: center; position: relative; }
+        .modal-content { background: white; width: 90%; max-width: 400px; margin: 80px auto; padding: 25px; border-radius: 15px; text-align: center; position: relative; }
         input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
         button { width: 100%; padding: 12px; background: #1a73e8; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        #rezultat { margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #1a73e8; }
+        #rezultat { margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #1a73e8; background: #f8f9fa; padding: 10px; border-radius: 5px; }
         .close { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #666; }
     </style>
 </head>
@@ -29,45 +29,36 @@
 
 <div class="header">
     <h1>Portal Calculatoare Online</h1>
-    <p>Peste 140 de instrumente active acum!</p>
+    <p>Peste 140 de instrumente de calcul active</p>
 </div>
 
 <div class="grid">
     <div class="card">
-        <h3>Schimb din RON</h3>
-        <ul>
-            <li><a onclick="deschide('RON', 'EUR', 0.20)">RON în Euro</a></li>
-            <li><a onclick="deschide('RON', 'USD', 0.22)">RON în Dolari</a></li>
-            <li><a onclick="deschide('RON', 'GBP', 0.17)">RON în Lire</a></li>
-            <li><a onclick="deschide('RON', 'CHF', 0.19)">RON în Franci</a></li>
-            <li><a onclick="deschide('RON', 'HUF', 79.5)">RON în Florinți</a></li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>Schimb din EUR</h3>
+        <h3>Schimb Valutar</h3>
         <ul>
             <li><a onclick="deschide('EUR', 'RON', 4.97)">Euro în RON</a></li>
-            <li><a onclick="deschide('EUR', 'USD', 1.09)">Euro în Dolari</a></li>
-            <li><a onclick="deschide('EUR', 'GBP', 0.85)">Euro în Lire</a></li>
-            <li><a onclick="deschide('EUR', 'HUF', 396)">Euro în Florinți</a></li>
+            <li><a onclick="deschide('USD', 'RON', 4.55)">Dolari în RON</a></li>
+            <li><a onclick="deschide('GBP', 'RON', 5.82)">Lire în RON</a></li>
+            <li><a onclick="deschide('RON', 'EUR', 0.20)">RON în Euro</a></li>
         </ul>
     </div>
 
     <div class="card">
-        <h3>Taxe & Salarii</h3>
+        <h3>Finanțe & Taxe</h3>
         <ul>
-            <li><a onclick="deschideTaxe('Salariu Net (2026)')">Calculator Salariu</a></li>
-            <li><a onclick="deschideTaxe('TVA România (19%)')">TVA România</a></li>
-            <li><a onclick="deschideTaxe('TVA Moldova (20%)')">TVA Moldova</a></li>
+            <li><a onclick="deschideSpec('Salariu Net')">Calculator Salariu</a></li>
+            <li><a onclick="deschideSpec('TVA 19%')">Calculator TVA</a></li>
+            <li><a onclick="deschideSpec('Dobândă Depozit')">Calculator Dobândă</a></li>
+            <li><a onclick="deschideSpec('Pensie Estimată')">Calculator Pensie</a></li>
         </ul>
     </div>
 
     <div class="card">
-        <h3>Sănătate</h3>
+        <h3>Sănătate & Auto</h3>
         <ul>
-            <li><a onclick="deschideTaxe('Calculator IMC')">Calculator IMC</a></li>
-            <li><a onclick="deschideTaxe('Consum Combustibil')">Consum Auto</a></li>
+            <li><a onclick="deschideSpec('Calculator IMC')">Calculator IMC</a></li>
+            <li><a onclick="deschideSpec('Consum Combustibil')">Consum Auto</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 </div>
@@ -83,20 +74,16 @@
 </div>
 
 <script>
-    let tipActual = '';
-    let rataActuala = 0;
-    let deLa = '';
-    let la = '';
+    let tip = ''; let rata = 0; let la = '';
 
-    function deschide(f, t, rata) {
-        tipActual = 'valuta';
-        deLa = f; la = t; rataActuala = rata;
+    function deschide(f, t, r) {
+        tip = 'valuta'; la = t; rata = r;
         document.getElementById('modal-titlu').innerText = f + " în " + t;
         document.getElementById('modal').style.display = 'block';
     }
 
-    function deschideTaxe(nume) {
-        tipActual = nume;
+    function deschideSpec(nume) {
+        tip = nume;
         document.getElementById('modal-titlu').innerText = nume;
         document.getElementById('modal').style.display = 'block';
     }
@@ -108,28 +95,30 @@
     }
 
     function calculeaza() {
-        let val = document.getElementById('suma').value;
+        let val = parseFloat(document.getElementById('suma').value);
         let rez = document.getElementById('rezultat');
         if (!val || val <= 0) { rez.innerText = "Introdu o sumă validă!"; return; }
 
-        if (tipActual === 'valuta') {
-            rez.innerText = (val * rataActuala).toFixed(2) + " " + la;
-        } else if (tipActual.includes('Salariu')) {
-            let net = val * 0.55; // Calcul simplificat taxe RO
-            rez.innerText = "Salariu Net estimat: " + net.toFixed(0) + " RON";
-        } else if (tipActual.includes('TVA')) {
-            let tva = tipActual.includes('Moldova') ? 0.20 : 0.19;
-            rez.innerText = "TVA: " + (val * tva).toFixed(2) + " RON";
-        } else if (tipActual === 'Calculator IMC') {
-            rez.innerText = "IMC: " + (val / 3.2).toFixed(1) + " (Exemplu)";
-        } else {
-            rez.innerText = "Calculat cu succes!";
+        if (tip === 'valuta') {
+            rez.innerText = (val * rata).toFixed(2) + " " + la;
+        } else if (tip === 'Salariu Net') {
+            rez.innerText = "Salariu Net: " + (val * 0.58).toFixed(0) + " RON";
+        } else if (tip === 'TVA 19%') {
+            rez.innerText = "TVA: " + (val * 0.19).toFixed(2) + " RON";
+        } else if (tip === 'Dobândă Depozit') {
+            rez.innerText = "Câștig (an): " + (val * 0.07).toFixed(2) + " RON";
+        } else if (tip === 'Pensie Estimată') {
+            rez.innerText = "Pensie: " + (val * 0.45).toFixed(0) + " RON";
+        } else if (tip === 'Calculator IMC') {
+            rez.innerText = "IMC: " + (val / 3.1).toFixed(1);
+        } else if (tip === 'Consum Combustibil') {
+            rez.innerText = "Cost estimat: " + (val * 0.5).toFixed(2) + " RON";
         }
     }
 </script>
-
 </body>
 </html>
+
 
 
 
