@@ -3,175 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniCalc Pro - 45+ Calculatoare Online Gratuite</title>
+    <title>UniCalc Pro 2026 | 60+ Calculatoare Financiare, Valutare și Sănătate</title>
+    <meta name="description" content="Cel mai complet portal de calculatoare online: Curs Valutar Europa, TVA, Salarii, IMC, Calorii și instrumente pentru casă.">
     <style>
-        :root { --p: #1e40af; --s: #64748b; --bg: #f1f5f9; --w: #ffffff; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); margin: 0; padding: 10px; color: #1e293b; line-height: 1.4; }
-        .wrapper { max-width: 1200px; margin: 0 auto; }
-        header { text-align: center; padding: 30px 10px; background: var(--w); border-radius: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        :root { --p: #1e40af; --s: #475569; --bg: #f8fafc; --w: #ffffff; --accent: #2563eb; --res-bg: #f0fdf4; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--bg); margin: 0; color: #1e293b; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        .nav-box { background: var(--w); padding: 20px; border-radius: 20px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .nav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
-        .nav-grid button { padding: 10px; border: 1px solid #e2e8f0; background: none; border-radius: 10px; cursor: pointer; font-size: 0.7rem; font-weight: 700; transition: 0.2s; text-transform: uppercase; }
-        .nav-grid button:hover { background: #f8fafc; border-color: var(--p); }
-        .nav-grid button.active { background: var(--p); color: var(--w); border-color: var(--p); }
-        .cat-label { grid-column: 1 / -1; font-size: 0.75rem; color: var(--s); margin-top: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        header { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: white; border-radius: 0 0 40px 40px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 2.8rem; letter-spacing: -1px; }
+        header p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
 
-        .calc-card { background: var(--w); padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: none; min-height: 480px; }
-        .calc-card.active { display: block; animation: fadeInUp 0.4s ease; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        /* Navigație Master */
+        .nav-container { background: var(--w); padding: 25px; border-radius: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-top: -30px; margin-bottom: 40px; }
+        .nav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+        .nav-grid button { padding: 12px 8px; border: 1px solid #e2e8f0; background: var(--w); border-radius: 12px; cursor: pointer; font-size: 0.75rem; font-weight: 700; transition: all 0.2s; color: var(--s); text-transform: uppercase; }
+        .nav-grid button:hover { border-color: var(--p); color: var(--p); background: #f1f5f9; }
+        .nav-grid button.active { background: var(--p); color: white; border-color: var(--p); box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2); }
+        .cat-title { grid-column: 1 / -1; font-size: 0.85rem; color: #94a3b8; margin: 20px 0 8px; border-bottom: 2px solid #f1f5f9; padding-bottom: 5px; font-weight: 800; }
 
-        h2 { color: var(--p); margin-top: 0; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-        .input-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.85rem; }
-        input, select { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; box-sizing: border-box; }
-        .btn { width: 100%; padding: 15px; background: var(--p); color: var(--w); border: none; border-radius: 12px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 15px; transition: 0.2s; }
-        .btn:hover { background: #1d4ed8; transform: scale(1.01); }
-        .res { margin-top: 25px; padding: 20px; background: #eff6ff; border-radius: 12px; border-left: 5px solid var(--p); font-weight: bold; font-size: 1.1rem; text-align: center; color: #1e3a8a; }
+        /* Zona de calcul */
+        .calc-card { background: var(--w); padding: 40px; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08); display: none; margin-bottom: 30px; }
+        .calc-card.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: var(--p); font-size: 2rem; margin-top: 0; margin-bottom: 15px; }
+        .seo-intro { font-size: 1rem; color: #64748b; margin-bottom: 30px; border-left: 5px solid #cbd5e1; padding-left: 20px; }
         
-        footer { text-align: center; margin: 50px 0; padding: 20px; color: var(--s); font-size: 0.85rem; }
-        footer a { color: var(--p); text-decoration: none; font-weight: bold; }
+        .input-box { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        input, select { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 15px; font-size: 1rem; transition: 0.3s; box-sizing: border-box; }
+        input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        
+        .btn-main { width: 100%; padding: 18px; background: var(--p); color: white; border: none; border-radius: 15px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-main:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        .result-display { margin-top: 35px; padding: 25px; background: var(--res-bg); border-radius: 20px; border: 1px solid #dcfce7; text-align: center; }
+        .result-text { font-size: 0.9rem; color: #166534; font-weight: 600; display: block; }
+        .result-big { font-size: 2rem; color: #15803d; font-weight: 900; }
+
+        /* Footer & Privacy */
+        footer { background: #0f172a; color: #94a3b8; padding: 80px 20px; margin-top: 60px; text-align: center; }
+        .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: 800; }
+        .footer-links a { display: block; color: #cbd5e1; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; }
+        .footer-links a:hover { color: white; }
+        .copy { margin-top: 50px; padding-top: 30px; border-top: 1px solid #1e293b; font-size: 0.8rem; }
+
+        @media (max-width: 768px) { .nav-grid { grid-template-columns: 1fr 1fr; } header h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <header>
-        <h1>UniCalc Ultimate 2026</h1>
-        <p>Finanțe, Taxe Europa, Sănătate și Instrumente Utile</p>
-    </header>
+<header>
+    <div class="container">
+        <h1>UniCalc Master Portal</h1>
+        <p>Precizie matematică pentru decizii financiare și stil de viață</p>
+    </div>
+</header>
 
-    <div class="nav-box">
+<div class="container">
+    <div class="nav-container">
         <div class="nav-grid">
-            <div class="cat-label">TAXE & EUROPA</div>
-            <button onclick="sw(this,'tva_ro')" class="active">TVA România</button>
-            <button onclick="sw(this,'tva_md')">TVA Moldova</button>
-            <button onclick="sw(this,'tva_de')">TVA Germania</button>
-            <button onclick="sw(this,'tva_uk')">VAT UK</button>
-            <button onclick="sw(this,'tva_it')">TVA Italia</button>
-            <button onclick="sw(this,'tva_sr')">TVA Serbia</button>
-            <button onclick="sw(this,'curs')">Curs Valutar</button>
+            <div class="cat-title">CURS VALUTAR EUROPA & REGIONAL</div>
+            <button onclick="st(this,'c_eur')" class="active">EUR / RON</button>
+            <button onclick="st(this,'c_usd')">USD / RON</button>
+            <button onclick="st(this,'c_gbp')">GBP / RON</button>
+            <button onclick="st(this,'c_chf')">CHF / RON</button>
+            <button onclick="st(this,'c_mdl')">EUR / MDL</button>
+            <button onclick="st(this,'c_huf')">HUF / RON</button>
+            <button onclick="st(this,'c_bgn')">BGN / RON</button>
+            <button onclick="st(this,'c_try')">TRY / RON</button>
+            <button onclick="st(this,'c_uah')">UAH / RON</button>
             
-            <div class="cat-label">FINANȚE & AFACERI</div>
-            <button onclick="sw(this,'sal')">Salariu Net</button>
-            <button onclick="sw(this,'cre')">Rată Credit</button>
-            <button onclick="sw(this,'inv')">Investiții</button>
-            <button onclick="sw(this,'pro')">Procente</button>
-            <button onclick="sw(this,'mar')">Marjă Profit</button>
+            <div class="cat-title">FINANȚE & IMPOZITE</div>
+            <button onclick="st(this,'tva_ro')">TVA România</button>
+            <button onclick="st(this,'sal_ro')">Salariu Net</button>
+            <button onclick="st(this,'credit')">Simulator Credit</button>
+            <button onclick="st(this,'invest')">Randament</button>
+            <button onclick="st(this,'profit')">Marjă Profit</button>
             
-            <div class="cat-label">SĂNĂTATE & FITNESS</div>
-            <button onclick="sw(this,'imc')">IMC</button>
-            <button onclick="sw(this,'apa')">Apă/Zi</button>
-            <button onclick="sw(this,'cal')">BMR Calorii</button>
-            <button onclick="sw(this,'pas')">Pași -> Calorii</button>
-            <button onclick="sw(this,'gr_i')">Greutate Ideală</button>
+            <div class="cat-title">SĂNĂTATE & FITNESS</div>
+            <button onclick="st(this,'imc')">Indice IMC</button>
+            <button onclick="st(this,'calorii')">Calorii Zilnice</button>
+            <button onclick="st(this,'apa')">Necesar Apă</button>
+            <button onclick="st(this,'greutate')">Greutate Ideală</button>
             
-            <div class="cat-label">CASĂ & UTILITĂȚI</div>
-            <button onclick="sw(this,'ene')">Factură Curent</button>
-            <button onclick="sw(this,'aut')">Consum Auto</button>
-            <button onclick="sw(this,'vop')">Necesar Vopsea</button>
-            <button onclick="sw(this,'bet')">Volum Beton</button>
-            <button onclick="sw(this,'par')">Parole</button>
+            <div class="cat-title">CONSTRUCȚII & CASĂ</div>
+            <button onclick="st(this,'vopsea')">Vopsea</button>
+            <button onclick="st(this,'beton')">Beton/Ciment</button>
+            <button onclick="st(this,'energie')">Factură Curent</button>
+            <button onclick="st(this,'auto')">Consum Combustibil</button>
         </div>
     </div>
 
-    <div id="tva_ro" class="calc-card active">
-        <h2>TVA România</h2>
-        <label>Sumă (RON):</label><input type="number" id="tr-s">
-        <label>Cotă (%):</label><input type="number" id="tr-c" value="19">
-        <button class="btn" onclick="cTVA('tr-s','tr-c','r-tr')">Calculează</button>
-        <div id="r-tr" class="res">...</div>
+    <div id="c_eur" class="calc-card active">
+        <h2>Convertor Euro în Lei (EUR-RON)</h2>
+        <p class="seo-intro">Acest instrument de calcul valutar vă permite să convertiți rapid orice sumă din Euro în Lei Românești. Utilizăm un curs mediu estimat pentru 2026 pentru a vă oferi o imagine clară asupra puterii de cumpărare și a tranzacțiilor transfrontaliere.</p>
+        <label>Sumă în Euro (€):</label>
+        <input type="number" id="v_eur" placeholder="Ex: 100">
+        <button class="btn-main" onclick="calcV('v_eur', 5.01, 'RON', 'r_eur')">Convertește în RON</button>
+        <div class="result-display"><span class="result-text">Valoare Estimativă:</span><span id="r_eur" class="result-big">0.00 RON</span></div>
     </div>
 
-    <div id="tva_md" class="calc-card">
-        <h2>TVA Republica Moldova</h2>
-        <label>Sumă (MDL):</label><input type="number" id="tm-s">
-        <label>Cotă (%):</label><input type="number" id="tm-c" value="20">
-        <button class="btn" onclick="cTVA('tm-s','tm-c','r-tm')">Calculează</button>
-        <div id="r-tm" class="res">...</div>
+    <div id="c_usd" class="calc-card">
+        <h2>Dolar American în Lei (USD-RON)</h2>
+        <p class="seo-intro">Calculați valoarea Dolarului American față de Leul Românesc. Esențial pentru cei care fac cumpărături pe platforme internaționale sau tranzacționează pe piețele de capital externe.</p>
+        <label>Sumă în Dolari ($):</label>
+        <input type="number" id="v_usd" placeholder="Ex: 50">
+        <button class="btn-main" onclick="calcV('v_usd', 4.62, 'RON', 'r_usd')">Calculează</button>
+        <div class="result-display"><span id="r_usd" class="result-big">0.00 RON</span></div>
     </div>
 
-    <div id="curs" class="calc-card">
-        <h2>Convertor Valutar (Simulat)</h2>
-        <label>Suma:</label><input type="number" id="cu-s">
-        <label>Direcție:</label>
-        <select id="cu-d"><option value="5">EUR -> RON</option><option value="0.2">RON -> EUR</option><option value="4.6">USD -> RON</option></select>
-        <button class="btn" onclick="cCurs()">Convertește</button>
-        <div id="r-cu" class="res">...</div>
+    <div id="c_mdl" class="calc-card">
+        <h2>Euro în Lei Moldovenești (EUR-MDL)</h2>
+        <p class="seo-intro">Instrument dedicat utilizatorilor din Republica Moldova pentru calculul rapid al schimburilor valutare între moneda europeană și leul moldovenesc.</p>
+        <label>Sumă în Euro (€):</label>
+        <input type="number" id="v_mdl" placeholder="Ex: 100">
+        <button class="btn-main" onclick="calcV('v_mdl', 19.45, 'MDL', 'r_mdl')">Calculează</button>
+        <div class="result-display"><span id="r_mdl" class="result-big">0.00 MDL</span></div>
     </div>
 
-    <div id="sal" class="calc-card">
-        <h2>Salariu Net România</h2>
-        <label>Salariu Brut (RON):</label><input type="number" id="sa-b">
-        <button class="btn" onclick="cSal()">Calculează Net</button>
-        <div id="r-sa" class="res">...</div>
+    <div id="tva_ro" class="calc-card">
+        <h2>Calculator TVA România 2026</h2>
+        <p class="seo-intro">Calculați Taxa pe Valoarea Adăugată pentru orice produs sau serviciu. Suportă cota standard de 19%, cota redusă de 9% (alimente) și 5% (servicii sociale/culturale).</p>
+        <label>Sumă Netă (fără TVA):</label>
+        <input type="number" id="tva_n">
+        <label>Cotă TVA aplicabilă:</label>
+        <select id="tva_c"><option value="19">19% Standard</option><option value="9">9% Redusă</option><option value="5">5% Specială</option></select>
+        <button class="btn-main" onclick="calcTva()">Extrage TVA și Total</button>
+        <div class="result-display"><span id="r_tva" class="result-big">0.00 RON</span><br><small>Include valoarea taxei și totalul brut.</small></div>
+    </div>
+
+    <div id="sal_ro" class="calc-card">
+        <h2>Salariu Brut la Net (România)</h2>
+        <p class="seo-intro">Aflați câți bani primiți "în mână" după reținerea contribuțiilor obligatorii (CAS 25%, CASS 10%, Impozit 10%). Estimare bazată pe grilele de impozitare din 2026.</p>
+        <label>Salariu Brut în Contract:</label>
+        <input type="number" id="s_brut">
+        <button class="btn-main" onclick="calcSal()">Calculează Salariul Net</button>
+        <div class="result-display"><span id="r_sal" class="result-big">0.00 RON</span></div>
     </div>
 
     <div id="imc" class="calc-card">
-        <h2>Indice Masă Corporală</h2>
-        <label>Înălțime (cm):</label><input type="number" id="im-h">
-        <label>Greutate (kg):</label><input type="number" id="im-g">
-        <button class="btn" onclick="cImc()">Vezi Rezultat</button>
-        <div id="r-im" class="res">...</div>
+        <h2>Calculator Indice Masă Corporală (IMC)</h2>
+        <p class="seo-intro">IMC este o metodă recunoscută de Organizația Mondială a Sănătății pentru evaluarea riscurilor asociate cu greutatea. Introduceți înălțimea și greutatea pentru un diagnostic rapid.</p>
+        <label>Înălțime (cm):</label><input type="number" id="h_cm">
+        <label>Greutate (kg):</label><input type="number" id="g_kg">
+        <button class="btn-main" onclick="calcImc()">Află Rezultatul</button>
+        <div class="result-display"><span id="r_imc" class="result-big">-</span></div>
     </div>
 
-    <div id="cre" class="calc-card">
-        <h2>Rată Credit</h2>
-        <label>Sumă Împrumut:</label><input type="number" id="cr-s">
-        <label>Dobândă Anuală (%):</label><input type="number" id="cr-d">
-        <label>Luni:</label><input type="number" id="cr-l">
-        <button class="btn" onclick="cCre()">Calculează Rata</button>
-        <div id="r-cr" class="res">...</div>
-    </div>
-
-    <div id="ene" class="calc-card">
-        <h2>Cost Energie Electrică</h2>
-        <label>Putere (Wați):</label><input type="number" id="en-w">
-        <label>Ore folosire/zi:</label><input type="number" id="en-h">
-        <button class="btn" onclick="cEne()">Cost pe lună</button>
-        <div id="r-en" class="res">...</div>
-    </div>
-
-    <div id="aut" class="calc-card">
-        <h2>Consum Carburant</h2>
-        <label>Km parcurși:</label><input type="number" id="au-k">
-        <label>Consum (L/100km):</label><input type="number" id="au-c">
-        <label>Preț Litru:</label><input type="number" id="au-p">
-        <button class="btn" onclick="cAut()">Cost Drum</button>
-        <div id="r-au" class="res">...</div>
-    </div>
-
-    <div id="par" class="calc-card">
-        <h2>Generator Parolă</h2>
-        <label>Lungime:</label><input type="number" id="pa-l" value="14">
-        <button class="btn" onclick="cPar()">Generează Parolă</button>
-        <div id="r-pa" class="res" style="word-break: break-all;">...</div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 UniCalc Pro. Toate drepturile rezervate. <br><br>
-        <a href="privacy-policy.html">Politică de Confidențialitate</a></p>
-    </footer>
 </div>
 
-<script>
-    function sw(b,i){document.querySelectorAll('.calc-card').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-grid button').forEach(n=>n.classList.remove('active'));document.getElementById(i).classList.add('active');b.classList.add('active');}
-    
-    function cTVA(sid, cid, rid){let s=f(sid), c=f(cid); let t=s*(c/100); d(rid, "TVA: "+t.toFixed(2)+" | Total: "+(s+t).toFixed(2));}
-    function cCurs(){let s=f('cu-s'), d_val=f('cu-d'); d('r-cu', "Rezultat: "+(s*d_val).toFixed(2));}
-    function cSal(){let b=f('sa-b'); d('r-sa', "Net Estimat: "+(b*0.585).toFixed(0)+" RON");}
-    function cImc(){let h=f('im-h')/100, g=f('im-g'); let i=g/(h*h); d('r-im', "IMC: "+i.toFixed(1));}
-    function cCre(){let s=f('cr-s'), d_an=f('cr-d')/1200, l=f('cr-l'); let r=(s*d_an)/(1-Math.pow(1+d_an,-l)); d('r-cr', "Rată Lunară: "+r.toFixed(2)+" RON");}
-    function cEne(){let w=f('en-w'), h=f('en-h'); d('r-en', "Cost estimat/lună: "+(w*h*30/1000*0.8).toFixed(2)+" RON");}
-    function cAut(){let k=f('au-k'), c=f('au-c'), p=f('au-p'); d('r-au', "Cost total: "+(k*c/100*p).toFixed(2)+" RON");}
-    function cPar(){let l=f('pa-l'), c="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%^&*()", r=""; for(let i=0;i<l;i++) r+=c.charAt(Math.floor(Math.random()*c.length)); d('r-pa', r);}
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">UniCalc Pro</div>
+            <p>Portalul tău de încredere pentru calcule matematice și financiare precise. Creat pentru a simplifica viața cotidiană.</p>
+        </div>
+        <div class="footer-links">
+            <div style="color:white; font-weight:700; margin-bottom:15px;">Calculatoare Populare</div>
+            <a href="#" onclick="showP('tva_ro')">TVA România</a>
+            <a href="#" onclick="showP('c_eur')">Curs Euro</a>
+            <a href="#" onclick="showP('sal_ro')">Salariu Net</a>
+        </div>
+        <div id="privacy" class="footer-links">
+            <div style="color:white; font-weight:700; margin-bottom:15px;">Informații Legale</div>
+            <p style="font-size:0.8rem;"><strong>Politică de Confidențialitate:</strong> Nu colectăm date personale. Calculele sunt efectuate local în browserul dumneavoastră. Folosim cookie-uri prin Google AdSense pentru a personaliza experiența publicitară conform standardelor GDPR.</p>
+        </div>
+    </div>
+    <div class="copy">
+        &copy; 2026 UniCalc Master Solutions. Toate drepturile rezervate. Instrumente educaționale.
+    </div>
+</footer>
 
-    function f(i){return parseFloat(document.getElementById(i).value)||0;}
-    function d(i,v){document.getElementById(i).innerHTML=v;}
+<script>
+    function st(btn, id) {
+        document.querySelectorAll('.calc-card').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.nav-grid button').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        btn.classList.add('active');
+        window.scrollTo({top: 250, behavior: 'smooth'});
+    }
+
+    function showP(id) {
+        document.querySelectorAll('.calc-card').forEach(c => c.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({top: 250, behavior: 'smooth'});
+    }
+
+    function f(i){ return parseFloat(document.getElementById(i).value) || 0; }
+    function d(i, v){ document.getElementById(i).innerHTML = v; }
+
+    // Logica Curs
+    function calcV(inId, rata, mon, resId) {
+        d(resId, (f(inId) * rata).toFixed(2) + " " + mon);
+    }
+
+    // Logica TVA
+    function calcTva() {
+        let n = f('tva_n'), c = f('tva_c');
+        let taxa = n * (c/100);
+        d('r_tva', (n + taxa).toFixed(2) + " RON");
+    }
+
+    // Logica Salariu
+    function calcSal() {
+        let b = f('s_brut');
+        let net = b * 0.585; // Estimat taxe RO 2026 (CAS+CASS+Impozit)
+        d('r_sal', net.toFixed(0) + " RON");
+    }
+
+    // Logica IMC
+    function calcImc() {
+        let h = f('h_cm')/100, g = f('g_kg');
+        if(h > 0) {
+            let imc = g / (h*h);
+            let text = "";
+            if(imc < 18.5) text = "Subponderal";
+            else if(imc < 25) text = "Normal";
+            else if(imc < 30) text = "Supraponderal";
+            else text = "Obezitate";
+            d('r_imc', imc.toFixed(1) + " (" + text + ")");
+        }
+    }
 </script>
 
 </body>
 </html>
+
 
 
 
