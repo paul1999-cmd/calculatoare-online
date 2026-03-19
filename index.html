@@ -3,65 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculatoare Online - Instrumente Gratuite de Calcul</title>
+    <title>Super Portal Calculatoare Online - 12 Instrumente Gratuite</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f0f2f5; margin: 0; padding: 0; color: #333; }
-        .header { background: #2c3e50; color: white; padding: 2rem; text-align: center; }
-        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-        .intro-text { background: white; padding: 20px; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        .card { background: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; color: #2c3e50; border-left: 5px solid #3498db; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .card h3 { margin-top: 0; color: #2980b9; }
-        .footer { text-align: center; padding: 2rem; color: #7f8c8d; font-size: 0.9rem; }
-        .nav-links { margin-top: 20px; }
-        .nav-links a { color: #3498db; text-decoration: none; margin: 0 10px; }
+        :root { --primary: #2563eb; --secondary: #64748b; --success: #059669; --bg: #f1f5f9; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 10px; color: #1e293b; }
+        .wrapper { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 20px 0; background: white; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 25px; }
+        .menu-grid button { padding: 12px 5px; border: none; background: white; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: 0.2s; border-bottom: 3px solid transparent; }
+        .menu-grid button:hover { background: #e2e8f0; border-bottom-color: var(--primary); }
+        .menu-grid button.active { background: var(--primary); color: white; border-bottom-color: #1e3a8a; }
+
+        .calc-section { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: none; min-height: 300px; }
+        .calc-section.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h2 { color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-top: 0; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 1rem; }
+        .btn-calc { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-calc:hover { background: #1d4ed8; }
+        
+        .result { margin-top: 20px; padding: 20px; background: #f8fafc; border-left: 5px solid var(--success); border-radius: 8px; font-size: 1.1rem; color: #0f172a; }
+        footer { text-align: center; margin-top: 40px; padding: 20px; font-size: 0.85rem; color: var(--secondary); }
+        footer a { color: var(--primary); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>Calculatoare Online Profesionale</h1>
-    <p>Soluții rapide pentru calcule zilnice</p>
-</div>
+<div class="wrapper">
+    <header>
+        <h1>Mega Portal Calculatoare</h1>
+        <p>Alege orice instrument de calcul de mai jos</p>
+    </header>
 
-<div class="container">
-    <div class="intro-text">
-        <h2>Despre Proiectul Nostru</h2>
-        <p>Oferim o gamă variată de calculatoare online gratuite, concepute pentru a simplifica procesele complexe de calcul. Fie că ai nevoie să calculezi TVA-ul pentru diferite țări europene, să îți verifici indicele de masă corporală (IMC) sau să simulezi salariul net, platforma noastră îți oferă rezultate precise și instantanee.</p>
-        <p>Toate instrumentele noastre sunt actualizate conform normelor în vigoare din 2026, asigurându-ne că primești informații relevante pentru nevoile tale financiare sau de sănătate.</p>
+    <div class="menu-grid">
+        <button onclick="showCalc('tva')" class="active">TVA</button>
+        <button onclick="showCalc('salariu')">Salariu</button>
+        <button onclick="showCalc('auto')">Consum Auto</button>
+        <button onclick="showCalc('imc')">IMC</button>
+        <button onclick="showCalc('apa')">Apă/Zi</button>
+        <button onclick="showCalc('red')">Reduceri</button>
+        <button onclick="showCalc('varsta')">Vârstă</button>
+        <button onclick="showCalc('credit')">Credit/Rată</button>
+        <button onclick="showCalc('procent')">% din X</button>
+        <button onclick="showCalc('timp')">Convertor Timp</button>
+        <button onclick="showCalc('energie')">Factură Curent</button>
+        <button onclick="showCalc('bacsis')">Bacșiș</button>
     </div>
 
-    <div class="grid">
-        <a href="calculator-tva-romania.html" class="card">
-            <h3>TVA România</h3>
-            <p>Calculează rapid taxa pe valoare adăugată pentru facturile tale din România.</p>
-        </a>
-        <a href="calculator-imc.html" class="card">
-            <h3>Calculator IMC</h3>
-            <p>Află indicele de masă corporală și starea ta de sănătate în câteva secunde.</p>
-        </a>
-        <a href="calculator-salariu-net.html" class="card">
-            <h3>Salariu Net</h3>
-            <p>Transformă salariul brut în net conform legislației actuale.</p>
-        </a>
-        <a href="calculator-tva-moldova.html" class="card">
-            <h3>TVA Moldova</h3>
-            <p>Instrument dedicat pentru calculul taxelor aplicate în Republica Moldova.</p>
-        </a>
+    <div id="tva" class="calc-section active">
+        <h2>Calculator TVA</h2>
+        <label>Suma:</label><input type="number" id="tva-s">
+        <label>Cotă TVA (%):</label><input type="number" id="tva-c" value="19">
+        <button class="btn-calc" onclick="cTVA()">Calculează</button>
+        <div id="r-tva" class="result">Rezultat...</div>
     </div>
+
+    <div id="salariu" class="calc-section">
+        <h2>Salariu Brut -> Net</h2>
+        <label>Salariu Brut (RON):</label><input type="number" id="sal-b">
+        <button class="btn-calc" onclick="cSal()">Calculează Net</button>
+        <div id="r-sal" class="result">Estimare net (fără deduceri).</div>
+    </div>
+
+    <div id="auto" class="calc-section">
+        <h2>Cost Călătorie</h2>
+        <label>Km:</label><input type="number" id="au-k">
+        <label>Consum (L/100km):</label><input type="number" id="au-c">
+        <label>Preț Litru:</label><input type="number" id="au-p">
+        <button class="btn-calc" onclick="cAu()">Calculează Cost</button>
+        <div id="r-au" class="result">Costul total al drumului.</div>
+    </div>
+
+    <div id="imc" class="calc-section">
+        <h2>Indice Masă Corporală</h2>
+        <label>Înălțime (cm):</label><input type="number" id="im-h">
+        <label>Greutate (kg):</label><input type="number" id="im-g">
+        <button class="btn-calc" onclick="cIm()">Află IMC</button>
+        <div id="r-im" class="result">Starea ta de sănătate.</div>
+    </div>
+
+    <div id="apa" class="calc-section">
+        <h2>Necesar Apă</h2>
+        <label>Greutate (kg):</label><input type="number" id="ap-g">
+        <button class="btn-calc" onclick="cAp()">Calculează</button>
+        <div id="r-ap" class="result">Litri recomandați pe zi.</div>
+    </div>
+
+    <div id="red" class="calc-section">
+        <h2>Calculator Reduceri</h2>
+        <label>Preț:</label><input type="number" id="re-p">
+        <label>Reducere (%):</label><input type="number" id="re-r">
+        <button class="btn-calc" onclick="cRe()">Vezi preț nou</button>
+        <div id="r-re" class="result">Cât economisești.</div>
+    </div>
+
+    <div id="varsta" class="calc-section">
+        <h2>Calculator Vârstă Exactă</h2>
+        <label>Anul Nașterii:</label><input type="number" id="va-a" placeholder="Ex: 1995">
+        <button class="btn-calc" onclick="cVa()">Calculează</button>
+        <div id="r-va" class="result">Câți ani ai împlinit.</div>
+    </div>
+
+    <div id="credit" class="calc-section">
+        <h2>Simulator Rată Credit</h2>
+        <label>Suma împrumutată:</label><input type="number" id="cr-s">
+        <label>Dobândă anuală (%):</label><input type="number" id="cr-d">
+        <label>Luni (perioada):</label><input type="number" id="cr-l">
+        <button class="btn-calc" onclick="cCr()">Calculează Rată</button>
+        <div id="r-cr" class="result">Rata lunară estimată.</div>
+    </div>
+
+    <div id="procent" class="calc-section">
+        <h2>Cât înseamnă X% din Y?</h2>
+        <label>Procent (%):</label><input type="number" id="pr-p">
+        <label>Din suma:</label><input type="number" id="pr-s">
+        <button class="btn-calc" onclick="cPr()">Calculează</button>
+        <div id="r-pr" class="result">Rezultat...</div>
+    </div>
+
+    <div id="timp" class="calc-section">
+        <h2>Convertor Ore în Minute/Secunde</h2>
+        <label>Număr Ore:</label><input type="number" id="ti-h">
+        <button class="btn-calc" onclick="cTi()">Convertește</button>
+        <div id="r-ti" class="result">Transformare timp.</div>
+    </div>
+
+    <div id="energie" class="calc-section">
+        <h2>Cost Energie Electrică</h2>
+        <label>Putere aparat (Wați):</label><input type="number" id="en-w" placeholder="Ex: 2000 pentru calorifer">
+        <label>Ore utilizare pe zi:</label><input type="number" id="en-h">
+        <label>Preț kWh (lei):</label><input type="number" id="en-p" value="0.80">
+        <button class="btn-calc" onclick="cEn()">Calculează Cost</button>
+        <div id="r-en" class="result">Costul pe zi/lună.</div>
+    </div>
+
+    <div id="bacsis" class="calc-section">
+        <h2>Calculator Bacșiș (Tip)</h2>
+        <label>Notă de plată:</label><input type="number" id="ba-s">
+        <label>Procent bacșiș (%):</label><input type="number" id="ba-p" value="10">
+        <button class="btn-calc" onclick="cBa()">Calculează</button>
+        <div id="r-ba" class="result">Cât să lași la restaurant.</div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Portalul Tău de Calculatoare. <br><br>
+        <a href="privacy-policy.html">Politică de Confidențialitate</a></p>
+    </footer>
 </div>
 
-<div class="footer">
-    <p>&copy; 2026 Calculatoare-Online. Toate drepturile rezervate.</p>
-    <div class="nav-links">
-        <a href="index.html">Acasă</a> | 
-        <a href="privacy-policy.html">Politică de Confidențialitate</a>
-    </div>
-</div>
+<script>
+    function showCalc(id) {
+        document.querySelectorAll('.calc-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.menu-grid button').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function cTVA() { let s=parseFloat(document.getElementById('tva-s').value), c=parseFloat(document.getElementById('tva-c').value); let t=s*(c/100); document.getElementById('r-tva').innerHTML="TVA: "+t.toFixed(2)+" | Total: "+(s+t).toFixed(2); }
+    function cSal() { let b=document.getElementById('sal-b').value; document.getElementById('r-sal').innerHTML="Net Estimat: "+(b*0.58).toFixed(0)+" RON"; }
+    function cAu() { let k=document.getElementById('au-k').value, c=document.getElementById('au-c').value, p=document.getElementById('au-p').value; document.getElementById('r-au').innerHTML="Cost: "+(k*c/100*p).toFixed(2)+" RON"; }
+    function cIm() { let h=document.getElementById('im-h').value/100, g=document.getElementById('im-g').value; let i=g/(h*h); document.getElementById('r-im').innerHTML="IMC: "+i.toFixed(1); }
+    function cAp() { let g=document.getElementById('ap-g').value; document.getElementById('r-ap').innerHTML="Apă: "+(g*0.035).toFixed(1)+" Litri/zi"; }
+    function cRe() { let p=document.getElementById('re-p').value, r=document.getElementById('re-r').value; let f=p-(p*r/100); document.getElementById('r-re').innerHTML="Preț Nou: "+f.toFixed(2); }
+    function cVa() { let a=document.getElementById('va-a').value; let n=new Date().getFullYear(); document.getElementById('r-va').innerHTML="Vârsta: "+(n-a)+" ani"; }
+    function cPr() { let p=document.getElementById('pr-p').value, s=document.getElementById('pr-s').value; document.getElementById('r-pr').innerHTML="Rezultat: "+(p*s/100).toFixed(2); }
+    function cTi() { let h=document.getElementById('ti-h').value; document.getElementById('r-ti').innerHTML=h+" ore = "+(h*60)+" min = "+(h*3600)+" sec"; }
+    function cCr() { let s=document.getElementById('cr-s').value, d=document.getElementById('cr-d').value/1200, l=document.getElementById('cr-l').value; let r=(s*d)/(1-Math.pow(1+d, -l)); document.getElementById('r-cr').innerHTML="Rată Lunară: "+r.toFixed(2)+" RON"; }
+    function cEn() { let w=document.getElementById('en-w').value, h=document.getElementById('en-h').value, p=document.getElementById('en-p').value; let k=(w*h/1000); document.getElementById('r-en').innerHTML="Cost/zi: "+(k*p).toFixed(2)+" RON"; }
+    function cBa() { let s=parseFloat(document.getElementById('ba-s').value), p=parseFloat(document.getElementById('ba-p').value); let b=s*(p/100); document.getElementById('r-ba').innerHTML="Bacșiș: "+b.toFixed(2)+" | Total: "+(s+b).toFixed(2); }
+</script>
 
 </body>
 </html>
+
 
 
 
